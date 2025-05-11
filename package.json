@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "start": "node webhookServer",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
