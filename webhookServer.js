@@ -8,6 +8,10 @@ app.use(express.json());
 
 // Webhook endpoint
 app.post('/webhook', (req, res) => {
+  if (!req.body) {
+    res.status(200).send({ message: 'Webhook received and processed' });
+  }
+
   const { timeResponse, minTimeResponse, maxTimeResponse } = req.body;
 
   let responseTime = 0;
