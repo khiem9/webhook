@@ -12,7 +12,12 @@ app.post('/webhook', (req, res) => {
     res.status(200).send({ message: 'Webhook received and processed' });
   }
 
-  const { timeResponse, minTimeResponse, maxTimeResponse } = req.body;
+  const { timeResponse, minTimeResponse, maxTimeResponse, failureRate } = req.body;
+
+  // Determine if the request should fail based on failureRate
+  if (failureRate !== undefined && Math.random() < failureRate / 100) {
+    return res.status(500).send({ message: 'Webhook failed intentionally' });
+  }
 
   let responseTime = 0;
 
